@@ -61,7 +61,7 @@ P_{sum}=E\cdot t\cdot \xi=180\times0.7\times0.864=108.864
 $$
 且对于$x,y$方向满足独立高斯分布，假设光斑大小$D_{spot}=70m$，则说明激光的$86.4\%$体积所包括的地方为$D_{apot}$
 
-![](D:\ys_matlab\LaserSimulation\程序日志\计算示例.bmp)
+![](./程序日志/计算示例.bmp)
 
 计算的过程中，由于$x,y​$是对称的同分布，是一个中心对称和轴对称图形，所以可以从二元变量的积分求解简化为对一元变量的积分求解，
 $$
@@ -108,7 +108,7 @@ $$
 $$
 P(x,y)=\frac{P_{sum}}{2\pi\sigma^2}e^{-\frac{1}{\sigma^2}(x^2+y2)},\sigma=23.4427,P_{sum}=108.864
 $$
-![](D:\ys_matlab\LaserSimulation\程序日志\计算1.bmp)
+![](./程序日志/计算1.bmp)
 
 密度计算为，
 $$
@@ -116,13 +116,13 @@ P_{density}=\sum_iP_i(x,y)/\sum i
 $$
 计算得到的光强分布与光强密度分布为
 
-![](D:\ys_matlab\LaserSimulation\程序日志\计算2.bmp)
+![](./程序日志/计算2.bmp)
 
 ### 接收器分布仿真
 
 #### 仿真原理
 
-![](D:\ys_matlab\LaserSimulation\程序日志\几何测量示意图.png)
+![](./程序日志/几何测量示意图.png)
 
 在对接收器仿真的时候，有四个变化的参数，
 
@@ -172,7 +172,7 @@ $$
 |        $y$坐标，直线的截距         |   $b$    |   $m$    |  $-\Delta:1:0$   |   $N_b=\Delta+1$   |
 | $k$斜率，控制在平面上所运行的方向r |   $m$    | $^\circ$ |     $0:1:15$     |      $N_m=16$      |
 
-![](D:\ys_matlab\LaserSimulation\程序日志\探测器摆放点阵.bmp)
+![](./程序日志/探测器摆放点阵.bmp)
 
 探测器的摆放如图所示，
 $$
@@ -180,10 +180,10 @@ x\in[0,240]\\
 y\in[-70,35]\\
 grid=\Delta
 $$
-质心坐标为$centroid_{first}(35,-\Delta)$，质心构成   的圆的直径大小为$centimeter=70m$。![](D:\ys_matlab\LaserSimulation\程序日志\运行示意图.bmp)仿真结果
+质心坐标为$centroid_{first}(35,-\Delta)$，质心构成   的圆的直径大小为$centimeter=70m$。![](./程序日志/运行示意图.bmp)仿真结果
 
 ##### 单个圆的仿真结果
 
-![](D:\ys_matlab\LaserSimulation\程序日志\单个圆距离35处的误差点分布.bmp)![](D:\ys_matlab\LaserSimulation\程序日志\单个圆计算TMO.bmp)
+![](./程序日志/单个圆距离35处的误差点分布.bmp)![](./程序日志/单个圆计算TMO.bmp)
 
 ##### 三个圆的仿真结果
