@@ -15,7 +15,7 @@ function centroidxy = calCentroid(delta,radium,slope,distance,index)
     l_m = repmat(l_s1,1,N_m);  % 逆时针旋转
     l_b = repmat(l_m,1,N_b);   % y方向平移
     l_all = l_b;               % 最后的x坐标全体
-    y_b = -delta:1:0; 
+    y_b = 0:1:delta;
     y_s1_b = repmat(y_b,N_s1*N_m,1);
     y_all_before = reshape(y_s1_b,1,N_s1*N_b*N_m);
     % 扩展顺序是逆时针旋转→x移动→y方向的平移
