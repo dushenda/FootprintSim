@@ -190,8 +190,100 @@ $$
 
 ##### 三个圆的仿真结果
 
+计算时间（双重循环）：时间已过 20.774403 秒。
+
 ![](./程序日志/三个圆计算TMO.bmp)
 
-使用循环计算：（计算用时：时间已过 125.620212 秒。）
+使用循环计算（4层）：（计算用时：时间已过 125.620212 秒。）
 
 ![](./程序日志/三个圆计算TMO2.bmp)
+
+计算时间（优化的双层循环）：时间已过 8.945614 秒。
+
+![](./程序日志/三个圆计算TMO3.bmp)
+
+未经优化的双层循环在`calError`
+
+```matlab
+    error = zeros(1,length(circle_xy)); % 循环前预分配内存    
+     for i = 1:length(circle_xy)
+         tmp = repmat(circle_xy(:,i),1,length(point_xy));
+         delta_xy = tmp - point_xy;
+         distance = sqrt(delta_xy(1,:).^2+delta_xy(2,:).^2);
+         index = distance<=35;
+         use_point_xy = point_xy;
+         use_point_xy(:,~index)=nan;
+         cal_xy = mean(use_point_xy,2,'omitnan');
+         error(i) = sqrt((circle_xy(1,i)-cal_xy(1))^2+(circle_xy(2,i)-cal_xy(2))^2);
+     end
+```
+
+经过优化的双层循环`calError`
+
+```matlab
+    dis = pdist2(point_xy',circle_xy');
+    isincircle = dis<35;
+    [~,circlecount] = size(dis);
+    numnozero = sum(isincircle);
+%     calcircle = zeros(2,cicrlecount);
+    for col = 1:circlecount
+        pointin = repmat(isincircle(:,col),1,2).*point_xy';
+        calcircle(col,:) = sum(pointin)./repmat(numnozero(col),1,2);
+    end
+    err = calcircle - circle_xy';
+    error = abs(err(:,1)+err(:,2)*1i);
+```
+
+循环计算的全部代码`loopCal`
+
+```matlab
+% test_loop
+clear;clc
+tic
+delta_range = 15:1:35;
+for delta = delta_range
+% delta = 20;
+detectorx = 0:delta:500+delta;detectory = -40:delta:420+delta;
+[X,Y] = meshgrid(detectorx,detectory);
+detectorxy = [reshape(X,numel(X),1),reshape(Y,numel(Y),1)];
+for b=0:1:delta
+    for m=0:1:30
+        for s1=35:1:delta+35
+            start1_l = s1;start1_y = b;
+            start2_l = s1+170;start2_y = b;
+            start3_l = s1+170*2;start3_y = b;
+            % rotate togrther
+            current1_x = start1_l*cos(m*pi/180);
+            current1_y = start1_y+start1_l*sin(m*pi/180);
+            current2_x = start2_l*cos(m*pi/180);
+            current2_y = start2_y+start2_l*sin(m*pi/180);
+            current3_x = start3_l*cos(m*pi/180); 
+            current3_y = start3_y+start3_l*sin(m*pi/180);
+            % x change
+%             current1_x = start1_l;
+%             current1_y = start1_y+current1_x*tan(m*pi/180);
+%             current2_x = start2_l;
+%             current2_y = start2_y+current2_x*tan(m*pi/180);
+%             current3_x = start3_l;
+%             current3_y = start3_y+current3_x*tan(m*pi/180);
+            
+            dis1 = pdist2(detectorxy,[current1_x,current1_y]);
+            dis1 = mean(detectorxy(dis1<35,:));
+            error1 = norm(dis1-[current1_x,current1_y]);
+            dis2 = pdist2(detectorxy,[current2_x,current2_y]);
+            dis2 = mean(detectorxy(dis2<=35,:));
+            error2 = norm(dis2-[current2_x,current2_y]);
+            dis3 = pdist2(detectorxy,[current3_x,current3_y]);
+            dis3 = mean(detectorxy(dis3<35,:));
+            error3 = norm(dis3-[current3_x,current3_y]);
+            error(b+1,m+1,s1-35+1) = mean([error1,error2,error3]);
+            std_all(b+1,m+1,s1-35+1) = std([error1,error2,error3]);
+        end
+    end
+end
+TMO(delta-14) = mean(error,'all');
+TMSD(delta-14) = mean(std_all,'all');
+end
+toc
+```
+

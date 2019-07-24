@@ -16,7 +16,6 @@ function error = calError(circle_xy,point_xy)
     end
     err = calcircle - circle_xy';
     error = abs(err(:,1)+err(:,2)*1i);
-%     error = norm();
     
 %     error = zeros(1,length(circle_xy)); % 循环前预分配内存    
 %      for i = 1:length(circle_xy)
