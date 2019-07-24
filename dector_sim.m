@@ -19,4 +19,3 @@ dector_y_min = -35;dector_y_max = 500;
 dector_xy = setDector(dector_x_min,dector_x_max,dector_y_min,dector_y_max,delta_i);
 [TMO(delta_i-delta(1)+1),TMSD(delta_i-delta(1)+1)] = calMean(centroidxy1,centroidxy2,centroidxy3,dector_xy);
 end
-
