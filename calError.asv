@@ -3,22 +3,18 @@ function error = calError(circle_xy,point_xy)
 % circle_xy为输入的圆心坐标
 % point_xy为输入的探测器坐标
 % 返回每个圆心点的误差
-
+    error = zeros(1,length(circle_xy)); % 循环前预分配内存
     
-    dis = pdist2(point_xy',circle_xy');
-    isincircle = dis<35;
-    [~,circlecount] = size(dis);
-    numnozero = sum(isincircle);
-%     calcircle = zeros(2,cicrlecount);
-    for col = 1:circlecount
-        pointin = repmat(isincircle(:,col),1,2).*point_xy';
-        calcircle(col,:) = sum(pointin)./repmat(numnozero(col),1,2);
-    end
-    err = calcircle - circle_xy';
-    error = abs(err(:,1)+err(:,2)*1i);
-%     error = norm();
+%     dis = pdist2(point_xy',circle_xy');
+%     isincircle = dis<35;
+%     [~,circlecount] = size(dis);
+%     numnozero = sum(isincircle);
+%     for col = 1:circlecount
+%         pointin = repmat(isincircle(:,col),1,2).*point_xy';
+%         calcircle(col,:) = sum(pointin)./repmat(numnozero(col),1,2);
+%     end
+%     error = norm(calcircle - circle_xy');
     
-%     error = zeros(1,length(circle_xy)); % 循环前预分配内存    
 %      for i = 1:length(circle_xy)
 %          tmp = repmat(circle_xy(:,i),1,length(point_xy));
 %          delta_xy = tmp - point_xy;
