@@ -16,7 +16,7 @@ function error = calError(circle_xy,point_xy)
     end
     err = calcircle - circle_xy';
     error = abs(err(:,1)+err(:,2)*1i);
-    
+    % 半循环计算法
 %     error = zeros(1,length(circle_xy)); % 循环前预分配内存    
 %      for i = 1:length(circle_xy)
 %          tmp = repmat(circle_xy(:,i),1,length(point_xy));
