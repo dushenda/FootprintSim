@@ -1,4 +1,4 @@
-function error = calError(circle_xy,point_xy)
+function error = calError(circle_xy,point_xy,radium)
 % 输入的矩阵格式为[x坐标;y坐标]
 % circle_xy为输入的圆心坐标
 % point_xy为输入的探测器坐标
@@ -6,7 +6,7 @@ function error = calError(circle_xy,point_xy)
 
     
     dis = pdist2(point_xy',circle_xy');
-    isincircle = dis<35;
+    isincircle = dis<=radium;
     [~,circlecount] = size(dis);
     numnozero = sum(isincircle);
 %     calcircle = zeros(2,cicrlecount);
@@ -16,6 +16,7 @@ function error = calError(circle_xy,point_xy)
     end
     err = calcircle - circle_xy';
     error = abs(err(:,1)+err(:,2)*1i);
+    
     % 半循环计算法
 %     error = zeros(1,length(circle_xy)); % 循环前预分配内存    
 %      for i = 1:length(circle_xy)

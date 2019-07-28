@@ -8,7 +8,7 @@ circle_distance = 170;           % 光斑与光斑之间的距离
 circle_number = 3;               % 光斑的个数 
 slope_angle = 0:1:15;            % 倾斜角度的取值
 dector_x_min = 0;dector_x_max = 500+delta_max;
-dector_y_min = -35;dector_y_max = 500+delta_max;
+dector_y_min = -35;dector_y_max = 300+delta_max;
 
 TMO = zeros(1,length(delta));TMSD = zeros(1,length(delta));
 for delta_i = delta 

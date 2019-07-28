@@ -1,5 +1,5 @@
-clear;clc
-E = 180;                                        % 激光脉冲能量
+function [p_distribute,density_distribute,X,Y,P_avg] = calLaserDistribute(E)
+% E = 180;                                        % 激光脉冲能量
 t = 0.7;                                        % 大气传输效率
 D_spot = 70;                                    % 激光光斑直径
 R_spot = D_spot/2;                              % 激光光斑半径
@@ -16,17 +16,6 @@ y = [-R_spot:1:R_spot]';
 [X,Y] = meshgrid(x,y);
 In = [X(:),Y(:)];                               
 z = P_ground_get*100*mvnpdf(In,mu,sigma);          % 独立二元高斯分布
-p_distribute = reshape(z,length(x),length(y)); % 数据可视化
+p_distribute = reshape(z,length(x),length(y));     % 数据可视化
 density_distribute = exp(-2*(X.^2+Y.^2)/D_spot^2);
-subplot(2,2,1);
-mesh(X,Y,p_distribute);colormap('jet');colorbar;
-xlabel('x direction/m');ylabel('y direction/m');zlabel('Power Density(nJ/cm^2)');title('Power Density Distribute');
-subplot(2,2,2);
-contourf(X,Y,p_distribute);colorbar;axis equal;
-xlabel('x direction/m');ylabel('y direction/m');zlabel('Power Density(nJ/cm^2)');title('Power Density Distribute');
-subplot(2,2,3);
-mesh(X,Y,density_distribute);colorbar;
-xlabel('x direction/m');ylabel('y direction/m');zlabel('Power Density');title('Gassian tansverse intensity profile');
-subplot(2,2,4);
-contourf(X,Y,density_distribute);colorbar;axis equal;
-xlabel('x direction/m');ylabel('y direction/m');zlabel('Power Density');title('Gassian tansverse intensity profile');
+end
