@@ -1,0 +1,104 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="1236537509" file="C:\Users\CALIBRATION\Desktop\卫星激光测高\ALL\LaserSimulation\LFSim.prj" location="C:\Users\CALIBRATION\Desktop\卫星激光测高\ALL\LaserSimulation" name="LFSim" target="target.mlapps" target-name="Package App">
+    <param.appname>LFSim</param.appname>
+    <param.authnamewatermark>dushenda</param.authnamewatermark>
+    <param.email>dushenda@outlook.com</param.email>
+    <param.company>KLOCC,AIOFM</param.company>
+    <param.icon>${PROJECT_ROOT}\LFSim_resources\icon_24.png</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}\LFSim_resources\icon_48.png</file>
+      <file>${PROJECT_ROOT}\LFSim_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\LFSim_resources\icon_16.png</file>
+    </param.icons>
+    <param.summary>作为激光测高系统的数据处理部分</param.summary>
+    <param.description>©中国科学院安徽光学精密机械研究所</param.description>
+    <param.screenshot>${PROJECT_ROOT}\rocket-1245696_1920.jpg</param.screenshot>
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>${PROJECT_ROOT}</param.output>
+    <param.guid>0f5dd98a-7305-400a-ba27-26c02fe6aca9</param.guid>
+    <unset>
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\Main.mlapp</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\bytes.m</file>
+      <file>${PROJECT_ROOT}\calCentroid.m</file>
+      <file>${PROJECT_ROOT}\calError.m</file>
+      <file>${PROJECT_ROOT}\calLaserDistribute.m</file>
+      <file>${PROJECT_ROOT}\calMean.m</file>
+      <file>${PROJECT_ROOT}\closePort.m</file>
+      <file>${PROJECT_ROOT}\createFitGauss.m</file>
+      <file>${PROJECT_ROOT}\fitGauss.m</file>
+      <file>${PROJECT_ROOT}\getAddressCode.m</file>
+      <file>${PROJECT_ROOT}\getBaud.m</file>
+      <file>${PROJECT_ROOT}\getLatitude.m</file>
+      <file>${PROJECT_ROOT}\getLongitude.m</file>
+      <file>${PROJECT_ROOT}\getPort.m</file>
+      <file>${PROJECT_ROOT}\getPower.m</file>
+      <file>${PROJECT_ROOT}\getTime.m</file>
+      <file>${PROJECT_ROOT}\getTriggerTime.m</file>
+      <file>${PROJECT_ROOT}\LFsim.mlapp</file>
+      <file>${PROJECT_ROOT}\plotGeoData.m</file>
+      <file>${PROJECT_ROOT}\processData.mlapp</file>
+      <file>${PROJECT_ROOT}\SerialsCommunicationGUI.fig</file>
+      <file>${PROJECT_ROOT}\SerialsCommunicationGUI.m</file>
+      <file>${PROJECT_ROOT}\setDector.m</file>
+      <file>${PROJECT_ROOT}\simDetector.m</file>
+    </fileset.depfun>
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\CALIBRATION\Desktop\卫星激光测高\ALL" name="LaserSimulation" optional="false">C:\Users\CALIBRATION\Desktop\卫星激光测高\ALL\LaserSimulation</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2019b</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
